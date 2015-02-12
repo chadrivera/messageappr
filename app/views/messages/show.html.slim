@@ -1,0 +1,33 @@
+p Post your messages here
+
+p
+
+.div class="span4 text-center"
+  =form_tag
+    form-horizontal
+      label class="col-sm-2 control-label" Name
+      textarea name="name" placeholder="Enter your name" rows="1" cols="40"
+    br
+    label class="col-sm-2 control-label" Message:
+    textarea name="newmessage" placeholder="Lorem?!" rows="8" cols="40"
+    br
+    input type="submit" value="Post here" class="btn btn-primary btn-lg"
+    / btn class="btn btn-primary btn-lg" Post here
+
+p Historical messages:
+
+- if @messages
+  / =debug session[:messages]
+
+  table.table.table-striped.table-condensed.table-hover border=1
+    tr
+      th Sender
+      th Message
+      th Time
+    - @messages.each do |msg|
+        tr
+          td=msg.username
+          td=msg.messages
+          td="#{(Time.now.to_i - msg.created_at.to_i)/3600.0} hrs ago"
+- else
+  = "No Messages"
