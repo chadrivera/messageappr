@@ -28,6 +28,6 @@ p Historical messages:
         tr
           td=msg.username
           td=msg.messages
-          td="#{(Time.now.to_i - msg.created_at.to_i)/3600.0} hrs ago"
+          td=msg.created_at
 - else
   = "No Messages"
