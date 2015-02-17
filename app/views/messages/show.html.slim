@@ -1,23 +1,27 @@
-p Post your messages here
-
-p
-
+- if @save.errors.present?
+    .div class="alert alert-danger" role="alert"
+      h1 Warning -- There were problems with your input
+      ul
+        - @save.errors.full_messages.each do |err|
+          li =err
+h2 Enter your messages
 .div class="span4 text-center"
   =form_tag
     form-horizontal
       label class="col-sm-2 control-label" Name
-      textarea name="name" placeholder="Enter your name" rows="1" cols="40"
+      textarea name="name" placeholder="Enter your name" rows="1" cols="40" value=@save.username
     br
     label class="col-sm-2 control-label" Message:
     textarea name="newmessage" placeholder="Lorem?!" rows="8" cols="40"
+      =@save.message
     br
     input type="submit" value="Post here" class="btn btn-primary btn-lg"
     / btn class="btn btn-primary btn-lg" Post here
 
-p Historical messages:
 
-- if @messages
+- if @messages.present?
   / =debug session[:messages]
+  p Historical messages:
 
   table.table.table-striped.table-condensed.table-hover border=1
     tr
@@ -27,7 +31,8 @@ p Historical messages:
     - @messages.each do |msg|
         tr
           td=msg.username
-          td=msg.messages
+          td=msg.message
           td=msg.created_at
 - else
-  = "No Messages"
+
+  p There were problems
