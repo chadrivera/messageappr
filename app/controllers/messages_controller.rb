@@ -12,7 +12,13 @@ class MessagesController < ActionController::Base
   def create
     @save = Message.new(
       username: params["name"],
-      message: params["newmessage"]
+      message:  params["newmessage"],
+      street:   params["street"],
+      city:     params["city"],
+      state:    params["state"],
+      zip:      params["zip"],
+      email:    params["email"],
+      phone:    params["phone"]
     )
     # save.messages = params["newmessage"]
     # save.username = params["name"]
