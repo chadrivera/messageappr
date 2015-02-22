@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   around_filter :set_time_zone
+  def current_user
+      User.find_by_id(session[:current_user_id])
+  end
 
+
+  #
   def set_time_zone(&block)
     Time.use_zone("Eastern Time (US & Canada)",&block)
   end

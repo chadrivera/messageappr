@@ -1,0 +1,11 @@
+.form-horizontal
+    =form_tag
+    .form-group
+      label class="col-sm-2 control-label" Channel
+      select name="channel_id" placeholder="Pick your Channel"
+        option Select your Channel
+        - @channels.each do |chan|
+          option value="#{chan.id}" =chan.name
+    form-group
+      .col-sm-offset-2
+        input type="submit" value="Post here" class="btn btn-primary btn-lg"

@@ -1,0 +1,15 @@
+-if @errormessage
+  .div class="alert alert-danger" role="alert"
+    h1 Warning -- There were problems with your input
+    ul
+        li =@errormessage
+h2 Who are you, Stranger?
+.form-horizontal
+    =form_tag
+    / form-horizontal
+    .form-group
+      label class="col-sm-2 control-label" Name
+      input type="text" name="username" placeholder="Enter your name" rows="1" cols="40"
+    .form-group
+      .col-sm-offset-2
+        input type="submit" value="Post here" class="btn btn-primary btn-lg"
